@@ -1,0 +1,9 @@
+version: '3'
+services:
+  web:
+    image: project:1.15
+    command: ./run-production.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8000:80"

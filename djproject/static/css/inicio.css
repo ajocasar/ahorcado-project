@@ -1,0 +1,32 @@
+ body {
+    margin: 0;
+    padding: 0;
+   /* background-image: url('file:///C:/Users/jackm/Downloads/fondo.jpeg');  Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center; /* Centra la imagen de fondo */
+    background-blend-mode: overlay; /* SuperposiciÛn para oscurecer */
+    background-color: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad para oscurecer */
+    font-family: Arial, sans-serif;
+  }
+
+  .content {
+    position: relative;
+    text-align: center;
+    padding: 50px;
+    color: white;
+    z-index: 1; /* Asegura que el contenido estÈ por encima del fondo */
+  }
+
+  .overlay-images {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -40%);
+  }
+
+  /* Ajusta el tamaÒo de las im·genes superpuestas seg˙n tus necesidades */
+  .overlay-images img {
+    width: 200px;
+    height: auto;
+    margin: 1800px;
+  }

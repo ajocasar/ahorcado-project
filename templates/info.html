@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<h3>Inicio</h3>
+
+{% if request.user.is_authenticated %}
+        <hr>
+<h4>
+        {{ user.username | upper }}, ¡Bienvenido!
+</h4>
+
+{% endif %}
+
+<head>
+    <link rel="stylesheet" href='{% static "css/inicio.css" %}'>
+  </head>
+
+<div class="content">
+  <h1>Bienvenido</h1>
+  <p>Los integrantes de grupo</p>
+  <p> Emma Mariona 201910010420</p>
+  <p> Jimmy Romero 201910010311 </p>
+  <p> Arnol Caballero 201110210044</p>
+  <p> Savier Oliva 201010510001</p>
+  <p> Pablo Palacios 201820010284</p>
+  <p> Fernando Vallecillo 202010010103</p>
+  <p> Eunice Caballero 251053334 </p>
+  <p> Manuel Servellon 201910060151
+</p>
+
+</div>
+
+<div class="overlay-images">
+  </div>
+
+{% endblock %}

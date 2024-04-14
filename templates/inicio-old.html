@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Del Ahorcado</title>
+    <link rel="stylesheet" href='{% static  "css/reset.css" %}'>
+    <link rel="stylesheet" href='{% static  "css/style.css" %}'>
+</head>
+<body>
+    <main>
+        
+        <hr>
+        <h4>{{ user.username | upper }}, ¡Bienvenido! </h4>
+        
+        <section class="paginaIndex">
+            <img class="principal" src='{% static "imagenes/AHORCADO PARTES/PARTE-1.svg" %}' alt="">
+            <video class="video" src='{% static "imagenes/ANIMACION BRUJA_VP9.webm" %}' loop autoplay muted></video>
+            <img src='{% static "imagenes/DESTELLO -08.svg" %}' alt="destellos" class="destellos">
+            <section class="botones">
+            <a onclick="paginaJugar()" ><p class="texto-jugar">JUGAR</p><img src='{% static "imagenes/tablon de madera.svg" %}' alt="boton jugar" class="btn-jugar"></a>
+            <a onclick="paginaAgregar()"> <p class="texto-agregar">AGREGAR PALABRA</p><img src='{% static "imagenes/tablon de madera.svg" %}' alt="boton agregar nueva palabra" class="btn-agregar"></a>
+        </section>
+
+        </section>
+        <section class="paginaAgregar">
+            <img class="fondo-agregar" src='{% static "imagenes/AGREGAR.svg" %}' alt="">
+            <textarea class="input-text" onkeypress="cancelar()" placeholder="Ingrese palabra" cols="30" rows="10" maxlength="8"></textarea>
+            <div class="botones-agregar">
+                <a onclick="paginaIndex()"><p class="texto-cancelar">Cancelar</p><img src='{% static "imagenes/tablon de madera.svg" %}' alt="boton volver" class="btn-cancelar"></a>
+                <a onclick="agregarBtn()" class="agregar"><p class="texto-guardar">Guardar y empezar</p><img src='{% static "imagenes/tablon de madera.svg" %}' alt="boton volver" class="btn-guardar"></a>
+            </div>
+            <div class="cont-alertasAgregar">
+                <p  id="permitidas" style="visibility:hidden;">Solo están permitidas las palabras de maximo 8 letras</p>
+                <p  id="palabraExiste" style="visibility:hidden;">La palabra ya existe, ¡intenta otra vez!</p>
+            </div>
+        </section>
+
+        <section class="paginaJugar">
+            <img class="fondo-juego" src='{% static "imagenes/AHORCADO PARTES/PARTE-1.svg" %}' alt="">
+            <img src='{% static "imagenes/DESTELLO -08.svg" alt="destellos" %}' class="destellos">
+            <div class="bruja"></div>
+            <div class="cont-palabra"><section class="palabra"></section></div>
+            <div class="container-letrasErradas"><p class="palabra-letrasErradas">Letras erradas:</p><p class="letrasErradas"></p></div>
+            <div class="cont-repetida">
+                <p id="repetida" style="visibility:hidden;">¡Letra repetida!</p>
+            </div>
+
+            <div class="intentos"><b class="titulo">Intentos </b> <img src='{% static "imagenes/LETRA.svg" %}' alt="imagen intentos"><p class="intentos-numero"></p></div>
+
+                <a onclick="paginaJugar()" class="jugar-nueva"><p class="texto-nueva">Reiniciar</p><img src='{% static "imagenes/tablon de madera.svg" %}' alt="boton nueva palabra" class="btn nueva"></a>
+
+                <a onclick="paginaIndex()" class="jugar-desistir"><p class="texto-desistir">Desistir</p><img src='{% static "imagenes/tablon de madera.svg" %}' alt="boton desistir" class="btn desistir"></a> 
+
+                <div id="alertaCorrecto-fondo" class="alertaCorrecto-fondo" style="visibility:hidden;">
+                    <img id="alertaCorrecto" class="alertaCorrecto" src='{% static "imagenes/ALERTA CORRECTO.svg" %}' alt="alerta correcto">
+                </div>
+
+                <div id="alertaFallo-fondo" class="alertaFallo-fondo" style="visibility:hidden;">
+                    <img class="alertaFallo" src='{% static "imagenes/ALERTA FALLO.svg" %}' alt="alerta correcto">
+                    <p class="texto-alertaFallo">aluraaaaa</p>
+                </div>
+        </section>
+
+    </main>
+    <script src='{% static "js/script.js" %}'></script>
+
+<div id="temporizador"></div>
+
+<script>
+    function mostrarTiempo(segundos) {
+        const minutos = Math.floor(segundos / 60);
+        const segundosRestantes = segundos % 60;
+        document.getElementById('temporizador').textContent = `Tiempo restante: ${minutos}:${segundosRestantes}`;
+    }
+</script>
+
+</body>
+</html>
+{% endblock %}
